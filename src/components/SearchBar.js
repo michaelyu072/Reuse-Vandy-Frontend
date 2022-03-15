@@ -19,6 +19,9 @@ function SearchBar(props) {
         <button className = 'searchButton'><SearchIcon/></button>
         </div>
         <div className = 'profileContainer'>
+        <button className = 'uploadButton'>
+            Upload Item
+        </button>
             <AccountCircleRoundedIcon/>
         </div>
     </section>
