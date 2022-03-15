@@ -11,7 +11,7 @@ function SearchBar(props) {
             <p className = 'vandyWord'>Vandy</p>
         </div>
         <div className = 'searchBarBox'>
-        <input placeholder = 'search reuse vandy'
+        <input placeholder = 'Search Reuse Vandy'
          defaultValue = {props.keyword} 
         className = 'searchBar' 
         // onChange = {(e) => {props.updateTerm(e.target.value);}}

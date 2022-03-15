@@ -1,5 +1,6 @@
 import React from "react";
 import SearchBar from './components/SearchBar';
+import Results from './components/Results';
 import { useSpring, animated} from 'react-spring';
 import {useState, useEffect} from 'react';
 
@@ -18,7 +19,7 @@ function App(props) {
       <animated.div className="searchContainer" style = {moves}>
         {/* <Heading /> */}
         <SearchBar keyword = {props.keyword} updateTerm = {props.update} />
-        {/* <SearchButton setFirstSearch = {props.setFirstSearch} keyword = {props.keyword} text = 'Search' redirect = 'results'/>  */}
+        <Results/>
       </animated.div>
     </section>
   );

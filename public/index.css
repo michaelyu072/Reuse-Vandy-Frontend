@@ -19,7 +19,8 @@ body, html {
   height: 100%;
   min-height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  flex-direction: column;
 }
 
 .searchBarContainer {
@@ -28,7 +29,6 @@ body, html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   padding-left: 5%;
   padding-right: 5%;
 }
@@ -88,7 +88,7 @@ body, html {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(165deg,gray, 60%, black);
+  background: linear-gradient(120deg,gray, 55%, black);
   outline: none;
   border: none;
   border-radius: 5px;
@@ -111,4 +111,107 @@ body, html {
   width: 50%;
   height: 50%;
   color: white;
+}
+
+.resultsBox {
+  margin-top: 50px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-top: 1px solid black;
+  padding-top: 50px;
+}
+
+.resultShadowBox {
+  height: 400px;
+  width: 80%;
+  box-shadow: 5px 5px rgb(190, 190, 190);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+
+.resultItemBox {
+  height: calc(100% + 5px);
+  width: calc(100% + 5px);
+  border: 1px solid gray;
+  background: white;
+  display: flex;
+  border-radius: 5px;
+}
+
+
+
+.itemImgBox {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemImg {
+  width: 80%;
+  height: 80%;
+  border-radius: 5px;
+}
+.itemDescriptions {
+  padding-top: 10%;
+  padding-bottom: 10%;
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.descriptionBox{  
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  width: 100%;
+  font-size: 20px;
+}
+
+.vandyEmail {
+  text-align: left;
+  width: 100%;
+  font-size: 15px;
+}
+
+.phoneNumber {
+  font-family: 'Open Sans', sans-serif;
+  width: 100%;
+  font-size: 15px;
+}
+
+.itemCheckoutBox {
+  width: 100%;
+  padding-left: 10%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.resultItemBox:hover {
+
+  transform: translateY(-5px) translateX(-5px);
+  
+  transition: 0.5s;
+}
+
+
+.price {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.checkoutButton {
+  width: 150px;
+  height: 40px;
 }
