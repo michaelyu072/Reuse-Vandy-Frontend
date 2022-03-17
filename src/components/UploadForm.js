@@ -6,7 +6,7 @@ class UploadForm extends React.Component {
       <section className = "uploadForm">
           <div className = "formInner">
             <button className = "close-btn"
-            onClick = {()=> this.this.props.setTrigger(false)}>
+            onClick = {()=> this.props.setTrigger(false)}>
             x
              </button>
 
