@@ -179,7 +179,7 @@ body, html {
   align-items: center;
 }
 
-.descriptionBox{  
+.descriptionBox{
   font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   width: 100%;
@@ -225,4 +225,71 @@ body, html {
   height: 40px;
   background: #d8c18e;
   cursor: pointer;
+}
+
+.uploadForm{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.2);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.formInner{
+  position: relative;
+  padding: 32px;
+  width: 50%;
+  height: 600px;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 6px 6px 29px -4px rgba(0,0,0,0.75);
+}
+
+.formInner .close-btn{
+   position: absolute;
+   top: 16px;
+   right: 16px;
+}
+
+.formEntry{
+  display: block;
+  white-space: nowrap;
+}
+
+.formLabel{
+  display: inline-block;
+  margin: auto;
+  width: 20%;
+  padding: 8px;
+}
+
+.formInput{
+  display: inline-block;
+  margin: 8px;
+  width: 70%;
+  padding: 8px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.pictureInput{
+  display: inline-block;
+  margin: 8px;
+  width: 50%;
+  padding: 8px;
+}
+
+.formTitle{
+  text-align: center;
+}
+
+.btn-submit{
+  position: absolute;
+  margin-top: 10px;
+  left: 47%;
 }
