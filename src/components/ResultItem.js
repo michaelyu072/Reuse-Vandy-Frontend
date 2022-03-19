@@ -16,7 +16,6 @@ function ResultItem() {
         </div>
         <div className = 'itemCheckoutBox'>
             <p className = 'price'>$20.00</p>
-            <button className = 'checkoutButton'>Something</button>
         </div>
     </div>
     </div>
