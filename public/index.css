@@ -302,6 +302,7 @@ body, html {
 .btn-submit{
     width: 150px;
     height: 40px;
+    margin-top: 20px;
     background: #d8c18e;
     cursor: pointer;
 }

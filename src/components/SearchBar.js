@@ -25,10 +25,9 @@ function SearchBar(props) {
           onClick={()=> setButtonPopup(true)}>
           Upload Item
         </button>
-        <Form
+        { buttonPopup ? <Form
           trigger = {buttonPopup}
-          setTrigger = {setButtonPopup}>
-          </Form>
+          setTrigger = {setButtonPopup}/> : <></> }
             <AccountCircleRoundedIcon/>
         </div>
     </section>
