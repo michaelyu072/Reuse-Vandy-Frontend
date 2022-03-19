@@ -30,7 +30,7 @@ function UploadForm(props) {
 
         db.collection('items').doc(`${parseInt(currentCount)+1}`).set(
           {
-            itemPrice: currentCount+1,
+            itemPrice: priceInput,
             itemCategory: categoryInput,
             itemDescription: descriptionInput,
             sellerName: nameInput,
