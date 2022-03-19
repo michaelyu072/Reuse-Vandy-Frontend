@@ -50,7 +50,7 @@ function UploadForm(props) {
           >
             X
           </button>
-          {submitted ? (<>
+          {!submitted ? (<>
           <h3 className="formTitle"> Upload Your Item! </h3>
 
           <form id="myForm">
