@@ -47,7 +47,7 @@ function UploadForm(props) {
 
     function checkFilled() {
       return priceInput && descriptionInput 
-      && nameInput && priceInput && emailInput;
+      && nameInput && emailInput;
     }
 
     return (
@@ -95,7 +95,7 @@ function UploadForm(props) {
 
           <button className ="btn-submit" disabled = {!checkFilled()} type="submit" onClick={() => {
               writeUserData();
-              alert("pressed");}} > Submit! </button> </>): <p>submitted!</p>}
+          }} > Submit! </button> </>): <p>submitted!</p>}
         </div> 
       </section>);
   }
