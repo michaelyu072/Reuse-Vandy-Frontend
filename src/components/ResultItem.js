@@ -12,12 +12,13 @@ function ResultItem(props) {
         </img>
         </div>
         <div className = 'itemDescriptions'> 
-            <p className = 'descriptionBox'>{obj.itemDescription}</p>
+            <p className = 'vandyEmail'>Seller: {obj.sellerName}</p>
             <p className = 'vandyEmail'>Email: {obj.sellerEmail}</p>
             <p className = 'phoneNumber'>Phone: {obj.sellerPhone}</p>
         </div>
         <div className = 'itemCheckoutBox'>
-            <p className = 'price'>{obj.itemPrice}</p>
+            <p className = 'descriptionBox'>{obj.itemDescription}</p>
+            <p className = 'price'>${obj.itemPrice}</p>
         </div>
     </div>
     </div>

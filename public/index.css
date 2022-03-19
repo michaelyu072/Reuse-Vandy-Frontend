@@ -306,3 +306,7 @@ body, html {
     background: #d8c18e;
     cursor: pointer;
 }
+
+.btn-submit:disabled {
+  cursor: default
+}

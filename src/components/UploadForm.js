@@ -14,6 +14,7 @@ function UploadForm(props) {
     const [phoneInput, updatePhoneInput] = useState('');
     const [submitted, updateSubmitted] = useState(false);
 
+
     firebase.initializeApp(config);
     const db = firebase.firestore();
 
@@ -30,17 +31,23 @@ function UploadForm(props) {
         db.collection('items').doc(`${parseInt(currentCount)+1}`).set(
           {
             itemPrice: currentCount+1,
-            itemCategory: 'deez',
-            itemDescription: 'yobro',
-            sellerName: 'mother',
-            sellerEmail: '3t',
-            sellerPhone: 'phoneInput',
+            itemCategory: categoryInput,
+            itemDescription: descriptionInput,
+            sellerName: nameInput,
+            sellerEmail: emailInput,
+            sellerPhone: phoneInput,
           }
         );
         
         db.collection('count').doc('1').set({value: currentCount+1});
       });
 
+      updateSubmitted(true);
+    }
+
+    function checkFilled() {
+      return priceInput && descriptionInput 
+      && nameInput && priceInput && emailInput;
     }
 
     return (
@@ -58,16 +65,17 @@ function UploadForm(props) {
 
           <form id="myForm">
             <label className="formLabel">Item Description: </label>
-            <input className="formInput" type="text" onChange = {(e) => {updateDescriptionInput(e.target.value);}} />
+            <input className="formInput" required type="text" 
+             onChange = {(e) => {updateDescriptionInput(e.target.value);}} />
 
             <label className="formLabel">Item Price: </label>
-            <input className="formInput" type="text" onChange = {(e) => {updatePriceInput(e.target.value);}} />
+            <input className="formInput" required type="text" onChange = {(e) => {updatePriceInput(e.target.value);}} />
 
             <label className="formLabel">Your Name: </label>
-            <input className="formInput" type="text"  onChange = {(e) => {updateNameInput(e.target.value);}}/>
+            <input className="formInput" required type="text"  onChange = {(e) => {updateNameInput(e.target.value);}}/>
 
             <label className="formLabel">Vandy Email: </label>
-            <input className="formInput" type="email" onChange = {(e) => {updateEmailInput(e.target.value);}}/>
+            <input className="formInput" required type="email" onChange = {(e) => {updateEmailInput(e.target.value);}}/>
 
             <label className="formLabel">Phone Number: </label>
             <input className="formInput" type="tel" onChange = {(e) => {updatePhoneInput(e.target.value);}}/>
@@ -85,7 +93,7 @@ function UploadForm(props) {
             <input className="pictureInput" type="file" /> */}
           </form>
 
-          <button className ="btn-submit"type="submit" onClick={() => {
+          <button className ="btn-submit" disabled = {!checkFilled()} type="submit" onClick={() => {
               writeUserData();
               alert("pressed");}} > Submit! </button> </>): <p>submitted!</p>}
         </div> 
