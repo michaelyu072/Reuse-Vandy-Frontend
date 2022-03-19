@@ -1,9 +1,8 @@
 import React from "react";
 import { useState } from 'react';
 import config from '../config';
-import { initializeApp } from "firebase/app";
-import { get, getDatabase, onValue, ref, set, child } from "firebase/database";
-import "firebase/database";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
 
 function UploadForm(props) {
 
@@ -15,29 +14,33 @@ function UploadForm(props) {
     const [phoneInput, updatePhoneInput] = useState('');
     const [submitted, updateSubmitted] = useState(false);
 
-    const app = initializeApp(config);
-    const database = getDatabase(app);
-    const dataRef = ref(database);
+    firebase.initializeApp(config);
+    const db = firebase.firestore();
 
     function writeUserData() {
-      var currentTotal = 0;
-      get(child(dataRef, "total")).then((res) => {
-        console.log(res.val());
-        currentTotal = res.val().val;
-        console.log(currentTotal);
-        set(ref(database, `items/${currentTotal + 1}`), {
-          itemPrice: priceInput,
-          itemCategory: categoryInput,
-          itemDescription: descriptionInput,
-          sellerName: nameInput,
-          sellerEmail: emailInput,
-          sellerPhone: phoneInput,
+
+      db.collection('count').get().then((res) => {
+        var currentCount = 0;
+        res.forEach(doc => {
+            console.log(doc.id, '=>', doc.data());
+            currentCount = doc.data().value;
         });
-        set(ref(database, "total"), {
-          val: currentTotal + 1,
-        });
-        updateSubmitted(true);
+        console.log(currentCount);
+
+        db.collection('items').doc(`${parseInt(currentCount)+1}`).set(
+          {
+            itemPrice: currentCount+1,
+            itemCategory: 'deez',
+            itemDescription: 'yobro',
+            sellerName: 'mother',
+            sellerEmail: '3t',
+            sellerPhone: 'phoneInput',
+          }
+        );
+        
+        db.collection('count').doc('1').set({value: currentCount+1});
       });
+
     }
 
     return (

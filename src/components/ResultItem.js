@@ -1,6 +1,8 @@
 import React from "react";
 
-function ResultItem() {
+function ResultItem(props) {
+
+    const obj = props.data;
 
   return (
       <div className = 'resultShadowBox'>
@@ -10,12 +12,12 @@ function ResultItem() {
         </img>
         </div>
         <div className = 'itemDescriptions'> 
-            <p className = 'descriptionBox'>Campbell Biology AP Edition Eleventh Edition - Hardcover By Lisa A. Urry - GOOD</p>
-            <p className = 'vandyEmail'>Email: michael.x.yu@vanderbilt.edu</p>
-            <p className = 'phoneNumber'>Phone: 281-919-3166</p>
+            <p className = 'descriptionBox'>{obj.itemDescription}</p>
+            <p className = 'vandyEmail'>Email: {obj.sellerEmail}</p>
+            <p className = 'phoneNumber'>Phone: {obj.sellerPhone}</p>
         </div>
         <div className = 'itemCheckoutBox'>
-            <p className = 'price'>$20.00</p>
+            <p className = 'price'>{obj.itemPrice}</p>
         </div>
     </div>
     </div>
