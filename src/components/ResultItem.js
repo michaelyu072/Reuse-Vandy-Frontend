@@ -8,7 +8,7 @@ function ResultItem(props) {
       <div className = 'resultShadowBox'>
     <div className = 'resultItemBox'>
         <div className = 'itemImgBox'>
-        <img className = 'itemImg' src = 'https://i.ebayimg.com/images/g/yXkAAOSw9jdeoQai/s-l400.jpg'>
+        <img className = 'itemImg' src = {obj.sellerPhoto}>
         </img>
         </div>
         <div className = 'itemDescriptions'> 

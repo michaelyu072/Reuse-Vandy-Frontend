@@ -29,7 +29,7 @@ function Results() {
     return (
         <section className = 'resultsBox'>
             {dataArray.length != 0 ? dataArray.map((c, index) => {
-                   if(index < 10) {
+                   if(index < 40) {
                     return <ResultItem data = {dataArray[index]} key = {index}/>;
                    }
             }) : <p>Loading</p>}

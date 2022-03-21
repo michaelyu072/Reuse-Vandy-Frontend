@@ -3,6 +3,8 @@ import { useState } from 'react';
 import config from '../config';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
+import "firebase/compat/storage";
+import { getDownloadURL, ref } from "firebase/storage";
 
 function UploadForm(props) {
 
@@ -12,37 +14,55 @@ function UploadForm(props) {
     const [nameInput, updateNameInput] = useState('');
     const [emailInput, updateEmailInput] = useState('');
     const [phoneInput, updatePhoneInput] = useState('');
+    const [imageAsFile, setImageAsFile] = useState('');
     const [submitted, updateSubmitted] = useState(false);
 
+    const handleImageAsFile = (e) => {
+      const image = e.target.files[0]
+      setImageAsFile(imageFile => (image))
+  }
 
     firebase.initializeApp(config);
     const db = firebase.firestore();
+    const dbStorage = firebase.storage();
 
     function writeUserData() {
 
-      db.collection('count').get().then((res) => {
-        var currentCount = 0;
-        res.forEach(doc => {
-            console.log(doc.id, '=>', doc.data());
-            currentCount = doc.data().value;
+      const uploadTask = dbStorage.ref(`/images/${imageAsFile.name}`).put(imageAsFile).then( 
+        () => {
+          var storageRef = ref(dbStorage, `images/${imageAsFile.name}`);
+
+          getDownloadURL(storageRef).then((downloadURL) => {
+
+            db.collection('count').get().then((res) => {
+              var currentCount = 0;
+              res.forEach(doc => {
+                  console.log(doc.id, '=>', doc.data());
+                  currentCount = doc.data().value;
+              });
+              console.log(currentCount);
+      
+              db.collection('items').doc(`${parseInt(currentCount)+1}`).set(
+                {
+                  itemPrice: priceInput,
+                  itemCategory: categoryInput,
+                  itemDescription: descriptionInput,
+                  sellerName: nameInput,
+                  sellerEmail: emailInput,
+                  sellerPhone: phoneInput,
+                  sellerPhoto: downloadURL
+                }
+              );
+              
+              db.collection('count').doc('1').set({value: currentCount+1});
+            });
+            
+          });
         });
-        console.log(currentCount);
-
-        db.collection('items').doc(`${parseInt(currentCount)+1}`).set(
-          {
-            itemPrice: priceInput,
-            itemCategory: categoryInput,
-            itemDescription: descriptionInput,
-            sellerName: nameInput,
-            sellerEmail: emailInput,
-            sellerPhone: phoneInput,
-          }
-        );
-        
-        db.collection('count').doc('1').set({value: currentCount+1});
-      });
-
+      
       updateSubmitted(true);
+
+    
     }
 
     function checkFilled() {
@@ -89,8 +109,8 @@ function UploadForm(props) {
               <option value="Other">Book</option>
             </select>
 
-            {/* <label className="formLabel">Upload Picture: </label>
-            <input className="pictureInput" type="file" /> */}
+            <input className="pictureInput" type="file" onChange={handleImageAsFile}/>
+          
           </form>
 
           <button className ="btn-submit" disabled = {!checkFilled()} type="submit" onClick={() => {
