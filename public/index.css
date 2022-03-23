@@ -244,7 +244,7 @@ body, html {
   position: relative;
   padding: 32px;
   width: 50%;
-  height: auto;
+  height: 70%;
   border-radius: 5px;
   background-color: white;
   box-shadow: 6px 6px 29px -4px rgba(0,0,0,0.75);
@@ -252,6 +252,7 @@ body, html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow-y: scroll;
 }
 
 .formInner .close-btn{

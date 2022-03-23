@@ -1,0 +1,31 @@
+
+
+@media (max-width: 800px) {
+
+    .formInner {
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-bottom: 0;
+        padding-top: 0;
+        width: 70%;
+    }
+    .formTitle{
+        margin-top: 40px;
+      }
+
+    .formLabel {
+        width: 100%;
+    }
+
+    .formInput,
+    .pictureInput {
+        margin-top: 0;
+        margin-bottom: 0;
+        width: 90%;
+    }
+
+    .btn-submit {
+        min-height: 30px;
+        margin-bottom: 20px;
+    }
+}
