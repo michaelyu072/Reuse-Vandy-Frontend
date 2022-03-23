@@ -9,11 +9,6 @@ function App(props) {
     const [rendered, toggleRendered] = useState(false);
     const moves = useSpring({opacity : rendered ? 1 : 0, config: {duration: 1000}});
 
-
-
-    
-
-
     useEffect(() => {
         toggleRendered(true);
     }, [])

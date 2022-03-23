@@ -1,10 +1,11 @@
 import React from "react";
+import { useState } from 'react';
 import Form from './UploadForm';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import SearchIcon from '@mui/icons-material/Search';
 
 function SearchBar(props) {
-  const [buttonPopup, setButtonPopup] = React.useState(false);
+  const [buttonPopup, setButtonPopup] = useState(false);
 
   return (
     <section className = 'searchBarContainer'>
@@ -28,7 +29,6 @@ function SearchBar(props) {
         { buttonPopup ? <Form
           trigger = {buttonPopup}
           setTrigger = {setButtonPopup}/> : <></> }
-            <AccountCircleRoundedIcon/>
         </div>
     </section>
   );
