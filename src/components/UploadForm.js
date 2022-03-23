@@ -74,7 +74,7 @@ function UploadForm(props) {
 
   return (
     <section className="uploadForm">
-      <div className="formInner">
+      <div className="formInner" >
         <button className="close-btn" onClick={() => props.setTrigger(false)}>
           X
         </button>

@@ -94,8 +94,8 @@ body, html {
 }
 
 .searchButton {
-  width: 35px;
-  height: 35px;
+  width: 33px;
+  height: 33px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -104,6 +104,8 @@ body, html {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 1px;
+  margin-bottom: 1px;
 }
 
 .searchButton svg {
@@ -151,7 +153,7 @@ body, html {
   max-height: 400px;
   width: 80%;
   min-width: 600px;
-  box-shadow: 5px 5px rgb(190, 190, 190);
+  box-shadow: 5px 5px 5px rgb(190, 190, 190);
   margin-top: 20px;
   margin-bottom: 20px;
   border-radius: 5px;
@@ -162,9 +164,9 @@ body, html {
   height: calc(100% + 4px);
   width: calc(100% + 4px);
   border: 1px solid gray;
-  background: white;
   display: flex;
   border-radius: 5px;
+  background: rgb(252, 249, 245);
 }
 
 
@@ -327,12 +329,13 @@ body, html {
   align-items: center;
   justify-content: center;
   font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
 }
 
 .submittedIconBox{
   width: 50px;
   height: 50px;
-  background: rgb(4, 226, 152);
+  background: rgb(0, 248, 165);
   border-radius: 50%;
   display: flex;
   justify-content: center;
