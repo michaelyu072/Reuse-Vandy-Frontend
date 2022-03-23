@@ -61,7 +61,8 @@
         height: 40%;
         display: flex;
         justify-content: center;
-        min-height: 200px;
+        min-height: 150px;
+        padding-top: 10px;
     }
 
     .itemCheckoutBox {
