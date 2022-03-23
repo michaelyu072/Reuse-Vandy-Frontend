@@ -28,4 +28,83 @@
         min-height: 30px;
         margin-bottom: 20px;
     }
+
+    .searchBarContainer {
+        flex-direction: column;
+        padding: 5%;
+    }
+
+    .searchBarBox {
+        width: 80%;
+    }
+
+    .searchBar {
+        font-size: 12px;
+    }
+    .searchButton {
+        margin-top: 1px;
+        margin-bottom: 1px;
+    }
+
+    .profileContainer,
+    .logoContainer {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .resultItemBox {
+        flex-direction: column;
+    }
+
+    .itemImgBox {
+        width: 100%;
+        height: 40%;
+        display: flex;
+        justify-content: center;
+        min-height: 200px;
+    }
+
+    .itemCheckoutBox {
+        height: 30%;
+        width: 100%;
+        padding: 0;
+    }
+
+    .descriptionBox {
+        margin: 0;
+        padding: 0 10px;
+        width: auto;
+    }
+
+    .price {
+        margin-bottom: 0;
+        margin-top: 10px;
+        text-align: center;
+        padding: 0 10%;
+    }
+
+    .itemDescriptions {
+        padding: 10px;
+        width: auto;
+    }
+
+    .resultShadowBox {
+        height: auto;
+        box-shadow: none;
+        min-width: 0;
+        max-height: none;
+    }
+
+    .resultItemBox {
+        height: auto;
+    }
+
+    .resultItemBox:hover {
+        transform: none;
+        transition: 0.2s;
+      }
+
+    .price {
+        font-size: 25px;
+    }
 }
