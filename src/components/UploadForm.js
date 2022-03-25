@@ -17,12 +17,58 @@ function UploadForm(props) {
   const [imageAsFile, setImageAsFile] = useState("");
   const [submitted, updateSubmitted] = useState(false);
   const [submitting, updateSubmitting] = useState(false);
+  const [arrayInput, updateArray] = useState([]);
 
   const handleImageAsFile = (e) => {
     const image = e.target.files[0];
     console.log(e.target.files[0]);
     setImageAsFile((imageFile) => image);
   };
+
+  function makeArray(){
+
+    const searchFields = [];
+
+    let searchable = categoryInput
+                    .toLowerCase()
+                    .split(/[\s-\.,!?]/)
+                    .filter(v=>v.length>0);
+        
+   // searchable = Array.from(new Set(searchable)); //remove duplicates
+    searchFields.push(...searchable);
+
+  
+    
+    searchable = descriptionInput
+    .toLowerCase()
+    .split(/[\s-\.,!?]/)
+    .filter(v=>v.length>3);
+    console.log(searchable)
+
+    //searchable = Array.from(new Set(searchable)); //remove duplicates
+    searchFields.push(...searchable);
+
+    searchable = nameInput
+    .toLowerCase()
+    .split(/[\s-\.,!?]/)
+    .filter(v=>v.length>3);
+
+    //searchable = Array.from(new Set(searchable)); //remove duplicates
+    searchFields.push(...searchable);
+
+
+    searchable = emailInput
+    .toLowerCase()
+    .split(/[\s-\.,!?]/)
+    .filter(v=>v.length>3);
+
+   // searchable = Array.from(new Set(searchable)); //remove duplicates
+    searchFields.push(...searchable);
+    return searchFields;
+  
+
+  }
+
 
   firebase.initializeApp(config);
   const db = firebase.firestore();
@@ -34,6 +80,8 @@ function UploadForm(props) {
       .put(imageAsFile)
       .then(() => {
         var storageRef = ref(dbStorage, `images/${imageAsFile.name}`);
+        makeArray();
+        console.log(arrayInput);
 
         getDownloadURL(storageRef).then((downloadURL) => {
           db.collection("count")
@@ -45,6 +93,7 @@ function UploadForm(props) {
                 currentCount = doc.data().value;
               });
 
+
               db.collection("items")
                 .doc(`${parseInt(currentCount) + 1}`)
                 .set({
@@ -55,6 +104,7 @@ function UploadForm(props) {
                   sellerEmail: emailInput,
                   sellerPhone: phoneInput,
                   sellerPhoto: downloadURL,
+                  sellerFields: makeArray()
                 })
                 .then((res) => {
                   updateSubmitted(true);
