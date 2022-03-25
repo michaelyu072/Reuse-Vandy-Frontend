@@ -4,12 +4,6 @@ import config from '../config';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { useState, useEffect } from 'react';
-import {
-    getAuth,
-    GoogleAuthProvider,
-    signInWithPopup,
-    signOut,
-  } from 'firebase/auth';
 
 
 function Results() {
@@ -21,33 +15,30 @@ function Results() {
 
     useEffect(() => {
 
-        var newData = [];
-
-        var query = db.collection('items');
-        query.where('itemDescription', '==', 'a').get().then((res) => {
-            
     
+
+        var userData = [];
+        const q = "huns";
+        const normalizedQuery = q.trim().toLowerCase();
+        db.collection("items").where('sellerFields', 'array-contains', normalizedQuery).get().then((res) => {
+
+            if (res.empty){
+                // EMPTY
+            }
+            console.log(res.empty)
+
             res.forEach(doc => {
-                if (!newData.includes(doc.data()));
-                newData.push(doc.data());
+                userData.push(doc.data());
+                console.log(doc.data());
               });
             
-        
+              setDataArray(userData);
 
-            query = db.collection('items');
-
-            query.where('itemCategory', '==', 'Clothing').get().then((res) => {
-            
-                res.forEach(doc => {
-                    if (!newData.includes(doc.data()));
-                        console.log(doc.data());
-                        newData.push(doc.data());
-                });
-                setDataArray(newData);
-            });
-    });
-    }, []);
-    console.log(dataArray);
+        });
+    
+    
+     }, []);
+   
 
     return (
         <section className = 'resultsBox'>
