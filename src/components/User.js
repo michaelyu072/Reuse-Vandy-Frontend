@@ -18,6 +18,10 @@ function getUserID() {
   return getAuth().currentUser.uid;
 }
 
+
+
+
+
 function displayUserPosts() {
   const [dataArray, setDataArray] = useState([]);
 
