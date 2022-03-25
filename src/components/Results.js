@@ -14,17 +14,34 @@ function Results() {
     const db = firebase.firestore();
 
     useEffect(() => {
-        db.collection('items').get().then((res) => {
-            console.log(res);
-            var newData = [];
+
+        var newData = [];
+
+        var query = db.collection('items');
+        query.where('itemDescription', '==', 'a').get().then((res) => {
+            
+    
             res.forEach(doc => {
-                console.log(doc.id, '=>', doc.data());
+                if (!newData.includes(doc.data()));
                 newData.push(doc.data());
               });
-            setDataArray(newData);
-        });
-    }, [])
+            
+        
 
+            query = db.collection('items');
+
+            query.where('itemCategory', '==', 'Clothing').get().then((res) => {
+            
+                res.forEach(doc => {
+                    if (!newData.includes(doc.data()));
+                        console.log(doc.data());
+                        newData.push(doc.data());
+                });
+                setDataArray(newData);
+            });
+    });
+    }, []);
+    console.log(dataArray);
 
     return (
         <section className = 'resultsBox'>
