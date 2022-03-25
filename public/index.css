@@ -63,6 +63,10 @@ body, html {
   height: 100%;
   width: auto;
 }
+
+.profilePopUp {
+  position: absolute;
+}
 .reuseWord {
   margin:0;
   margin-right: 10px;
@@ -166,7 +170,7 @@ body, html {
   border: 1px solid gray;
   display: flex;
   border-radius: 5px;
-  background: rgb(252, 249, 245);
+  background: white;
 }
 
 

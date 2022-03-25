@@ -4,6 +4,12 @@ import config from '../config';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { useState, useEffect } from 'react';
+import {
+    getAuth,
+    GoogleAuthProvider,
+    signInWithPopup,
+    signOut,
+  } from 'firebase/auth';
 
 
 function Results() {
