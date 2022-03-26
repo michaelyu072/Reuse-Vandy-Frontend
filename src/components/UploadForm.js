@@ -17,7 +17,6 @@ function UploadForm(props) {
   const [imageAsFile, setImageAsFile] = useState("");
   const [submitted, updateSubmitted] = useState(false);
   const [submitting, updateSubmitting] = useState(false);
-  const [arrayInput, updateArray] = useState([]);
 
   const handleImageAsFile = (e) => {
     const image = e.target.files[0];
@@ -36,8 +35,6 @@ function UploadForm(props) {
         
    // searchable = Array.from(new Set(searchable)); //remove duplicates
     searchFields.push(...searchable);
-
-  
     
     searchable = descriptionInput
     .toLowerCase()
@@ -48,25 +45,21 @@ function UploadForm(props) {
     //searchable = Array.from(new Set(searchable)); //remove duplicates
     searchFields.push(...searchable);
 
-    searchable = nameInput
+    searchable = localStorage.getItem('name')
     .toLowerCase()
     .split(/[\s-\.,!?]/)
-    .filter(v=>v.length>3);
 
     //searchable = Array.from(new Set(searchable)); //remove duplicates
     searchFields.push(...searchable);
 
 
-    searchable = emailInput
+    searchable = localStorage.getItem('email')
     .toLowerCase()
-    .split(/[\s-\.,!?]/)
-    .filter(v=>v.length>3);
 
    // searchable = Array.from(new Set(searchable)); //remove duplicates
-    searchFields.push(...searchable);
+    searchFields.push(searchable);
     return searchFields;
   
-
   }
 
 
@@ -81,7 +74,6 @@ function UploadForm(props) {
       .then(() => {
         var storageRef = ref(dbStorage, `images/${imageAsFile.name}`);
         makeArray();
-        console.log(arrayInput);
 
         getDownloadURL(storageRef).then((downloadURL) => {
           db.collection("count")
@@ -97,13 +89,15 @@ function UploadForm(props) {
               db.collection("items")
                 .doc(`${parseInt(currentCount) + 1}`)
                 .set({
+                  itemID: currentCount,
                   itemPrice: priceInput,
                   itemCategory: categoryInput,
                   itemDescription: descriptionInput,
-                  sellerName: nameInput,
-                  sellerEmail: emailInput,
                   sellerPhone: phoneInput,
                   sellerPhoto: downloadURL,
+                  sellerName: localStorage.getItem('name'),
+                  sellerEmail: localStorage.getItem('email'),
+                  sellerID: localStorage.getItem('userID'),
                   sellerFields: makeArray()
                 })
                 .then((res) => {
@@ -119,7 +113,7 @@ function UploadForm(props) {
   }
 
   function checkFilled() {
-    return priceInput && descriptionInput && nameInput && emailInput;
+    return priceInput && descriptionInput;
   }
 
   return (
@@ -152,7 +146,7 @@ function UploadForm(props) {
                 }}
               />
 
-              <label className="formLabel">Your Name: </label>
+              {/* <label className="formLabel">Your Name: </label>
               <input
                 className="formInput"
                 required
@@ -160,9 +154,9 @@ function UploadForm(props) {
                 onChange={(e) => {
                   updateNameInput(e.target.value);
                 }}
-              />
+              /> */}
 
-              <label className="formLabel">Vandy Email: </label>
+              {/* <label className="formLabel">Vandy Email: </label>
               <input
                 className="formInput"
                 required
@@ -170,7 +164,7 @@ function UploadForm(props) {
                 onChange={(e) => {
                   updateEmailInput(e.target.value);
                 }}
-              />
+              /> */}
 
               <label className="formLabel">Phone Number: </label>
               <input

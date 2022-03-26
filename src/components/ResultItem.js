@@ -3,8 +3,9 @@ import React from "react";
 function ResultItem(props) {
 
     const obj = props.data;
+    
 
-  return (
+  return ( 
       <div className = 'resultShadowBox'>
     <div className = 'resultItemBox'>
         <div className = 'itemImgBox'>
@@ -20,10 +21,11 @@ function ResultItem(props) {
             <p className = 'vandyEmail'>Email: {obj.sellerEmail}</p>
             <p className = 'phoneNumber'>Phone: {obj.sellerPhone}</p>
         </div>
+        {obj.sellerID == localStorage.getItem('userID') ? <button onClick = {() => {props.delete(obj.itemID)}}>remove</button> : <> </>}
 
     </div>
     </div>
-  );
+  ) ;
 }
 
 export default ResultItem;

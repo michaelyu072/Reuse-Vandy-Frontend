@@ -17,6 +17,7 @@ function App(props) {
     }
 
     function search() {
+      console.log('search');
       setSearching(true);
       flipSearchToggle(!searchToggle)
     }
@@ -31,7 +32,7 @@ function App(props) {
       <animated.div className="searchContainer" style = {moves}>
         {/* <Heading /> */}
         <SearchBar updateSearch = {updateSearch} search = {search} />
-        <Results stopSearch = {() => {setSearching(false)}}searching = {searching} searchTerm = {searchTerm} searchToggle = {searchToggle}/>
+        <Results stopSearch = {() => {setSearching(false)}}searching = {searching} searchTerm = {searchTerm} searchToggle = {searchToggle} search = {search}/>
       </animated.div>
     </section>
   );
