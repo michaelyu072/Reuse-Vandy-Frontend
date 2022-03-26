@@ -46,15 +46,13 @@ function SearchBar(props) {
         />
         <button className = 'searchButton'><SearchIcon/></button>
         </div>
+
+
         <div className = 'profileContainer'>
-        <button className = 'uploadButton'
-          onClick={()=> setButtonPopup(true)}>
-          Upload Item
-        </button>
-        <div onMouseEnter = {() => {setShowProfile(true)}} onMouseLeave = {() => {setShowProfile(false)}}>
-        <AccountCircleRoundedIcon/>
+        <div onClick = {() => {setShowProfile(!showProfile)}}>
+        {currentUser ? <img className = 'profileImg' src = {currentUser.photoURL}></img> : <AccountCircleRoundedIcon/>}
         {showProfile ?
-        <Profile signIn = {signIn} currentUser = {currentUser}/> : <></>}
+        <Profile setButtonPopup = {() => {setButtonPopup(true)}}signIn = {signIn} currentUser = {currentUser}/> : <></>}
         </div>
 
         { buttonPopup ? <Form
