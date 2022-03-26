@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Form from './UploadForm';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import SearchIcon from '@mui/icons-material/Search';
@@ -13,21 +13,47 @@ import { getAuth, GoogleAuthProvider, signInWithPopup, signOut} from 'firebase/a
 function SearchBar(props) {
   const [buttonPopup, setButtonPopup] = useState(false);
   const [showProfile, setShowProfile] = useState('');
-
-  const [userId, setUserId] = useState('');
   const [currentUser, setCurrentUser] = useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [userImg, setUserImg] = useState('');
+  const [signInToken, setSignIn] = useState(false);
+
   firebase.initializeApp(config);
   const db = firebase.firestore();
-
   function signIn() {
     var provider = new GoogleAuthProvider();
     signInWithPopup(getAuth(), provider).then((res) => {
-        console.log(getAuth().currentUser.uid);
-        setUserId(getAuth().currentUser.uid);
-        setCurrentUser(getAuth().currentUser);
-
+        const user = getAuth().currentUser;
+        setCurrentUser(user);
+        localStorage.setItem('userImg', user.photoURL);
+        localStorage.setItem('userID', user.uid);
+        localStorage.setItem('name', user.displayName);
+        localStorage.setItem('email', user.email);
+        setSignIn(true);
     })
 }
+
+  function signOutOfFirebase() {
+    signOut(getAuth()).then((res)=> {
+      console.log(res);
+      localStorage.clear();
+      window.location.reload();
+      console.log('signed out');
+    });
+  }
+
+useEffect(() => {
+
+  if(localStorage.getItem('userID')) {
+      console.log('called');
+      setCurrentUser(localStorage.getItem('userID'));
+      setName(localStorage.getItem('name'));
+      setEmail(localStorage.getItem('email'));
+      setUserImg(localStorage.getItem('userImg'));
+  }
+}, [signInToken]);
+
 
   return (
 
@@ -48,9 +74,10 @@ function SearchBar(props) {
 
         <div className = 'profileContainer'>
         <div onClick = {() => {setShowProfile(!showProfile)}}>
-        {currentUser ? <img className = 'profileImg' src = {currentUser.photoURL}></img> : <AccountCircleRoundedIcon/>}
+        {currentUser ? <img className = 'profileImg' src = {userImg}></img> : <AccountCircleRoundedIcon/>}
         {showProfile ?
-        <Profile setButtonPopup = {() => {setButtonPopup(true)}}signIn = {signIn} currentUser = {currentUser}/> : <></>}
+        <Profile name = {name} email = {email} userImg = {userImg} signOut = {signOutOfFirebase}
+        setButtonPopup = {() => {setButtonPopup(true)}}signIn = {signIn} currentUser = {currentUser}/> : <></>}
         </div>
 
         { buttonPopup ? <Form

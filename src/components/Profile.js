@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 function Profile(props) {
   return (
-    <div className="profilePopUp">
+    <div className="profilePopUp" onClick = {(e) => {e.stopPropagation();}}>
 
 
       {!props.currentUser ? (
@@ -14,15 +14,18 @@ function Profile(props) {
       )}
       {props.currentUser ? ( <>
       <div className = 'profileInfo'>
-        <img className = 'profileImg' src = {props.currentUser.photoURL}></img>
-    <p className = 'nameText'>{props.currentUser.displayName}
-      <p className = 'emailText'>{props.currentUser.email}</p></p>
+        <img className = 'profileImg' src = {props.userImg}></img>
+    <p className = 'nameText'>{props.name}</p>
+    <p className = 'emailText'>{props.email}</p>
       </div>
         <button
           className="uploadButton"
           onClick={() => props.setButtonPopup(true)}
         >
           Upload Item
+        </button>
+        <button className = 'signOutButton' onClick = {props.signOut}>
+            Sign Out
         </button>
       </>) : (
         <> </>

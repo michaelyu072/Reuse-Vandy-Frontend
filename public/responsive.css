@@ -32,8 +32,13 @@
     }
 
     .searchBarContainer {
+        position: relative;
         flex-direction: column-reverse;
         padding: 5px 0;
+    }
+
+    .profilePopUp {
+        transform: translateX(-39%);
     }
 
     .searchBarBox {
