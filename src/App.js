@@ -7,7 +7,19 @@ import {useState, useEffect} from 'react';
 function App(props) {
 
     const [rendered, toggleRendered] = useState(false);
+    const [searchTerm, updateSearchTerm] = useState('');
     const moves = useSpring({opacity : rendered ? 1 : 0, config: {duration: 1000}});
+    const [searchToggle, flipSearchToggle] = useState(true);
+    const [searching, setSearching] = useState(false);
+
+    function updateSearch(newTerm) {
+      updateSearchTerm(newTerm);
+    }
+
+    function search() {
+      setSearching(true);
+      flipSearchToggle(!searchToggle)
+    }
 
     useEffect(() => {
         toggleRendered(true);
@@ -18,8 +30,8 @@ function App(props) {
     <section className="main">
       <animated.div className="searchContainer" style = {moves}>
         {/* <Heading /> */}
-        <SearchBar keyword = {props.keyword} updateTerm = {props.update} />
-        <Results/>
+        <SearchBar updateSearch = {updateSearch} search = {search} />
+        <Results stopSearch = {() => {setSearching(false)}}searching = {searching} searchTerm = {searchTerm} searchToggle = {searchToggle}/>
       </animated.div>
     </section>
   );

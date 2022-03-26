@@ -6,38 +6,37 @@ import 'firebase/compat/firestore';
 import { useState, useEffect } from 'react';
 
 
-function Results() {
+function Results(props) {
 
     const [dataArray, setDataArray] = useState([]);
+    const [noResult, setNoResult] = useState(false);
 
     firebase.initializeApp(config);
     const db = firebase.firestore();
 
     useEffect(() => {
 
-    
-
         var userData = [];
-        const q = "huns";
+        const q = props.searchTerm;
         const normalizedQuery = q.trim().toLowerCase();
         db.collection("items").where('sellerFields', 'array-contains', normalizedQuery).get().then((res) => {
 
             if (res.empty){
                 // EMPTY
             }
-            console.log(res.empty)
 
             res.forEach(doc => {
                 userData.push(doc.data());
-                console.log(doc.data());
               });
-            
               setDataArray(userData);
+              if(userData.length == 0) {
+                  setNoResult(true);
+              }
 
         });
     
-    
-     }, []);
+        props.stopSearch();
+     }, [props.searchToggle]);
    
 
     return (
@@ -46,7 +45,7 @@ function Results() {
                    if(index < 40) {
                     return <ResultItem data = {dataArray[index]} key = {index}/>;
                    }
-            }) : <p>Loading</p>}
+            }) : !props.searching && noResult ? <p>No Result</p> : <p>Loading</p>}
         </section>
     );
 }

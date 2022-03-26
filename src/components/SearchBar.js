@@ -12,7 +12,6 @@ import { getAuth, GoogleAuthProvider, signInWithPopup, signOut} from 'firebase/a
 
 function SearchBar(props) {
   const [buttonPopup, setButtonPopup] = useState(false);
-  const [currentUserImg, setCurrentUserImg] = useState('');
   const [showProfile, setShowProfile] = useState('');
 
   const [userId, setUserId] = useState('');
@@ -40,11 +39,10 @@ function SearchBar(props) {
         </div>
         <div className = 'searchBarBox'>
         <input placeholder = 'Search Reuse Vandy'
-         defaultValue = {props.keyword}
         className = 'searchBar'
-        // onChange = {(e) => {props.updateTerm(e.target.value);}}
+        onChange = {(e) => {props.updateSearch(e.target.value);}}
         />
-        <button className = 'searchButton'><SearchIcon/></button>
+        <button className = 'searchButton' onClick = {props.search}><SearchIcon/></button>
         </div>
 
 
