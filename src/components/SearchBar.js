@@ -49,7 +49,7 @@ onAuthStateChanged(getAuth(), (user) => {
     localStorage.setItem('name', user.displayName);
     localStorage.setItem('email', user.email);
     setCurrentUser(user.uid);
-    setName(user.name);
+    setName(user.displayName);
     setEmail(user.email);
     setUserImg(user.photoURL);
     // ...
