@@ -6,7 +6,7 @@ import {useState, useEffect} from 'react';
 
 function App(props) {
 
-    const [rendered, toggleRendered] = useState(false);
+    const [rendered, toggleRendered] = useState(localStorage.getItem('userID') ? true : false);
     const [searchTerm, updateSearchTerm] = useState('');
     const moves = useSpring({opacity : rendered ? 1 : 0, config: {duration: 1000}});
     const [searchToggle, flipSearchToggle] = useState(true);

@@ -33,6 +33,7 @@ function SearchBar(props) {
         localStorage.setItem('email', user.email);
         setSignIn(true);
         setShowProfile(false);
+        window.location.reload();
     })
 }
 
