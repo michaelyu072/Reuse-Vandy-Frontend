@@ -53,10 +53,10 @@ onAuthStateChanged(getAuth(), (user) => {
     localStorage.setItem('userID', user.uid);
     localStorage.setItem('name', user.displayName);
     localStorage.setItem('email', user.email);
-    setCurrentUser(getAuth().currentUser.uid);
-    setName(getAuth().currentUser.name);
-    setEmail(getAuth().currentUser.email);
-    setUserImg(getAuth().currentUser.photoURL);
+    setCurrentUser(user.uid);
+    setName(user.name);
+    setEmail(user.email);
+    setUserImg(user.photoURL);
     // ...
   } else {
     console.log('signed out');

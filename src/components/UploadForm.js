@@ -182,11 +182,11 @@ function UploadForm(props) {
                   updateCategoryInput(e.target.value);
                 }}
               >
-                <option value="Book">Book</option>
+                <option value="Other">Other</option>
                 <option value="Clothing">Clothing</option>
                 <option value="School Supply">School Supply</option>
                 <option value="Food">Food</option>
-                <option value="Other">Other</option>
+                <option value="Book">Book</option>
               </select>
               
               <label className="formLabel">Item Image: </label>
