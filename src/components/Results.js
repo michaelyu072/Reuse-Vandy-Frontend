@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react';
 function Results(props) {
 
     const [dataArray, setDataArray] = useState([]);
+    const [myItemArray, setMyItemArray] = useState([]);
     const [noResult, setNoResult] = useState(false);
     const [displayMyItem, setDisplayMyItem] = useState(false);
     firebase.initializeApp(config);
@@ -45,6 +46,8 @@ function Results(props) {
             res.forEach(doc => {
                 userData.push(doc.data());
               });
+              console.log('results: ');
+              console.log(userData);
               setDataArray(userData);
               if(userData.length == 0) {
                   setNoResult(true);
@@ -54,6 +57,34 @@ function Results(props) {
     
         props.stopSearch();
      }, [props.searchToggle]);
+
+     useEffect(() => {
+
+        console.log('called');
+        var userData = [];
+        console.log(localStorage.getItem('userID'));
+        db.collection("items").where('sellerID', '==', localStorage.getItem('userID')).get().then((res) => {
+            if (res.empty){
+                console.log('got nothing');
+            }
+
+            res.forEach(doc => {
+                userData.push(doc.data());
+              });
+              console.log('myItems: ');
+              console.log(userData);
+              setMyItemArray(userData);
+              if(userData.length == 0) {
+                  setNoResult(true);
+              }
+
+        });
+    
+        props.stopSearch();
+     }, [props.searchToggle]);
+   
+     const currentArray = displayMyItem ? myItemArray : dataArray;
+     console.log(currentArray);
    
 
     return (<>
@@ -62,9 +93,9 @@ function Results(props) {
         <button className = { displayMyItem ? 'resultSwitchYes' : 'resultSwitchNot'} onClick = {() => {setDisplayMyItem(true)}}>My Items</button>
         </section>
         <section className = 'resultsBox'>
-            {dataArray.length != 0 ? dataArray.map((c, index) => {
+            {currentArray.length != 0 ? currentArray.map((c, index) => {
                    if(index < 40) {
-                    return <ResultItem delete = {deleteItem} data = {dataArray[index]} key = {index}/>;
+                    return <ResultItem delete = {deleteItem} data = {currentArray[index]} key = {index}/>;
                    }
             }) : !props.searching && noResult ? <p className = 'resultsText'>No Result</p> : <p className = 'resultsText'>Loading</p>}
         </section></>
