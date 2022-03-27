@@ -7,7 +7,7 @@ function Profile(props) {
 
       {!props.currentUser ? (
         <button className="signInButton" onClick={props.signIn}>
-          sign in
+          Sign In
         </button>
       ) : (
         <></>
