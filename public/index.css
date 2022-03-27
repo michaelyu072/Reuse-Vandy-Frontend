@@ -262,7 +262,7 @@ body, html {
 .resultShadowBox {
   height: 30vw;
   max-height: 400px;
-  width: 80%;
+  width: 85%;
   min-width: 600px;
   box-shadow: 5px 5px 5px rgb(190, 190, 190);
   margin-top: 20px;
