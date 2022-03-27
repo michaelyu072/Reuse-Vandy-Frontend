@@ -16,12 +16,9 @@ function Results(props) {
 
     function deleteItem(itemID) {
         if(window.confirm('You are about to delete an item!')) {
-        console.log('deleted');
-        console.log(itemID);
         const collectionRef = db.collection('items').where('itemID', '==', itemID)
         collectionRef.get().then((res) => {
             res.forEach((item) => {
-            console.log(item);
               item.ref.delete().then((res) => {
               });
             });
@@ -31,12 +28,9 @@ function Results(props) {
     }     
 
     useEffect(() => {
-
-        console.log('called');
         var userData = [];
         const q = props.searchTerm;
         const normalizedQuery = q.toLowerCase().split(/[\s-\,!?]/);
-        console.log(normalizedQuery);
         db.collection("items").where('sellerFields', 'array-contains-any', normalizedQuery).get().then((res) => {
             if (res.empty){
                 // EMPTY
@@ -45,8 +39,6 @@ function Results(props) {
             res.forEach(doc => {
                 userData.push(doc.data());
               });
-              console.log('results: ');
-              console.log(userData);
               setDataArray(userData);
               if(userData.length == 0) {
                   setNoResult(true);
@@ -59,19 +51,14 @@ function Results(props) {
 
      useEffect(() => {
 
-        console.log('called');
         var userData = [];
-        console.log(localStorage.getItem('userID'));
         db.collection("items").where('sellerID', '==', localStorage.getItem('userID')).get().then((res) => {
             if (res.empty){
-                console.log('got nothing');
             }
 
             res.forEach(doc => {
                 userData.push(doc.data());
               });
-              console.log('myItems: ');
-              console.log(userData);
               setMyItemArray(userData);
               if(userData.length == 0) {
                   setNoResult(true);
@@ -83,7 +70,6 @@ function Results(props) {
      }, [props.searchToggle]);
    
      const currentArray = props.displayMyItem ? myItemArray : dataArray;
-     console.log(currentArray);
    
 
     return (<>

@@ -20,7 +20,6 @@ function UploadForm(props) {
 
   const handleImageAsFile = (e) => {
     const image = e.target.files[0];
-    console.log(e.target.files[0]);
     setImageAsFile((imageFile) => image);
   };
 
@@ -39,7 +38,6 @@ function UploadForm(props) {
     searchable = descriptionInput
     .toLowerCase()
     .split(/[\s-\.,!?]/);
-    console.log('description in data' + searchable);
 
     //searchable = Array.from(new Set(searchable)); //remove duplicates
     searchFields.push(...searchable);
@@ -80,7 +78,6 @@ function UploadForm(props) {
             .then((res) => {
               var currentCount = 0;
               res.forEach((doc) => {
-                console.log(doc.id, "=>", doc.data());
                 currentCount = doc.data().value;
               });
 

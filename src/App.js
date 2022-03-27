@@ -22,7 +22,6 @@ function App(props) {
     }
 
     function search(button) {
-      console.log('search');
       setSearching(true);
       flipSearchToggle(!searchToggle);
       if(button) {

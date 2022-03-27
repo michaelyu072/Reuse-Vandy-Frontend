@@ -39,17 +39,14 @@ function SearchBar(props) {
 
   function signOutOfFirebase() {
     signOut(getAuth()).then((res)=> {
-      console.log(res);
       localStorage.clear();
       window.location.reload();
-      console.log('signed out');
     });
   }
 
 useEffect(() => {
 
   if(localStorage.getItem('userID')) {
-      console.log('called');
       setCurrentUser(localStorage.getItem('userID'));
       setName(localStorage.getItem('name'));
       setEmail(localStorage.getItem('email'));
