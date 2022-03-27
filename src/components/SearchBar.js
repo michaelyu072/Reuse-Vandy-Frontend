@@ -28,7 +28,7 @@ function SearchBar(props) {
         if(user.email.toLowerCase().endsWith("vanderbilt.edu")) {
           setCurrentUser(user);
           setShowProfile(false);
-          // window.location.reload();
+          window.location.reload();
         } else {
           alert('Please Sign In With Vanderbilt Google Account');
         }
@@ -49,14 +49,14 @@ onAuthStateChanged(getAuth(), (user) => {
     // User is signed in, see docs for a list of available properties
     // https://firebase.google.com/docs/reference/js/firebase.User
     console.log('signed in');
-    setCurrentUser(getAuth().currentUser.uid);
-    setName(getAuth().currentUser.name);
-    setEmail(getAuth().currentUser.email);
-    setUserImg(getAuth().currentUser.photoURL);
     localStorage.setItem('userImg', user.photoURL);
     localStorage.setItem('userID', user.uid);
     localStorage.setItem('name', user.displayName);
     localStorage.setItem('email', user.email);
+    setCurrentUser(getAuth().currentUser.uid);
+    setName(getAuth().currentUser.name);
+    setEmail(getAuth().currentUser.email);
+    setUserImg(getAuth().currentUser.photoURL);
     // ...
   } else {
     console.log('signed out');
