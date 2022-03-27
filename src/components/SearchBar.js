@@ -25,15 +25,10 @@ function SearchBar(props) {
     var provider = new GoogleAuthProvider();
     signInWithPopup(getAuth(), provider).then((res) => {
         const user = getAuth().currentUser;
-        if(user.email.toLowerCase().endsWith("vanderbilt.edu")) {
           setCurrentUser(user);
           setShowProfile(false);
           window.location.reload();
-        } else {
-          alert('Please Sign In With Vanderbilt Google Account');
-        }
-
-    })
+    });
 }
 
   function signOutOfFirebase() {
