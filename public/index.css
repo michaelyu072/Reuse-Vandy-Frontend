@@ -214,15 +214,44 @@ body, html {
   margin-top: 20vh;
 }
 
+.resultSwitches {
+  height: 100px;
+  margin-left: 10%;
+  margin-right: 10%;
+  display: flex;
+  align-items: flex-end;
+  transform: translateY(1px);
+}
+
+.resultSwitchNot,
+.resultSwitchYes {
+  margin-right: 4px;
+  border: 1px solid gray;
+  cursor: pointer;
+  height: 25px;
+  border: 1px solid rgb(245, 240, 240);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+
+}
+
+.resultSwitchYes {
+  height: 28px;
+  border-bottom: none;
+  background: white;
+  cursor: pointer;
+  transform: translateY(1px);
+  box-shadow: 2px -1px 2px rgb(201, 197, 197);
+}
+
 .resultsBox {
-  margin-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-left: 10%;
   margin-right: 10%;
-  border-top: 2px solid gray;
   padding-top: 50px;
+  border-top: 1px solid rgb(245, 240, 240);
 }
 
 .resultText {
@@ -246,10 +275,11 @@ body, html {
   height: calc(100% + 4px);
   width: calc(100% + 4px);
   border: 1px solid rgb(245, 240, 240);
+  box-shadow: 0px 0px 10px rgb(201, 197, 197);
   display: flex;
   border-radius: 5px;
   background: white;
-  box-shadow: 0px 0px 10px rgb(201, 197, 197);
+
 }
 
 
@@ -354,6 +384,11 @@ body, html {
    top: 16px;
    right: 16px;
    cursor: pointer;
+   border: none;
+   background: rgb(226, 224, 224);
+   border-radius: 5px;
+   width: 20px;
+   height: 20px;
 }
 
 .inputContainer {

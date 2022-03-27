@@ -10,6 +10,7 @@ function Results(props) {
 
     const [dataArray, setDataArray] = useState([]);
     const [noResult, setNoResult] = useState(false);
+    const [displayMyItem, setDisplayMyItem] = useState(false);
     firebase.initializeApp(config);
     const db = firebase.firestore();
 
@@ -55,14 +56,18 @@ function Results(props) {
      }, [props.searchToggle]);
    
 
-    return (
+    return (<>
+        <section className = 'resultSwitches'>
+        <button className = {! displayMyItem ? 'resultSwitchYes' : 'resultSwitchNot'} onClick = {() => {setDisplayMyItem(false)}}>Search Results</button>
+        <button className = { displayMyItem ? 'resultSwitchYes' : 'resultSwitchNot'} onClick = {() => {setDisplayMyItem(true)}}>My Items</button>
+        </section>
         <section className = 'resultsBox'>
             {dataArray.length != 0 ? dataArray.map((c, index) => {
                    if(index < 40) {
                     return <ResultItem delete = {deleteItem} data = {dataArray[index]} key = {index}/>;
                    }
             }) : !props.searching && noResult ? <p className = 'resultsText'>No Result</p> : <p className = 'resultsText'>Loading</p>}
-        </section>
+        </section></>
     );
 }
 
