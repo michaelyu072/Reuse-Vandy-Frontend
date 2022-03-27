@@ -7,7 +7,7 @@ import Profile from './Profile';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import config from '../config';
-import { getAuth, GoogleAuthProvider, signInWithPopup, signOut} from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signOut} from 'firebase/auth';
 
 
 function SearchBar(props) {
@@ -17,7 +17,6 @@ function SearchBar(props) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [userImg, setUserImg] = useState('');
-  const [signInToken, setSignIn] = useState(false);
 
   firebase.initializeApp(config);
   const db = firebase.firestore();
@@ -28,13 +27,8 @@ function SearchBar(props) {
         const user = getAuth().currentUser;
         if(user.email.toLowerCase().endsWith("vanderbilt.edu")) {
           setCurrentUser(user);
-          localStorage.setItem('userImg', user.photoURL);
-          localStorage.setItem('userID', user.uid);
-          localStorage.setItem('name', user.displayName);
-          localStorage.setItem('email', user.email);
-          setSignIn(true);
           setShowProfile(false);
-          window.location.reload();
+          // window.location.reload();
         } else {
           alert('Please Sign In With Vanderbilt Google Account');
         }
@@ -49,15 +43,21 @@ function SearchBar(props) {
     });
   }
 
-useEffect(() => {
 
-  if(localStorage.getItem('userID')) {
-      setCurrentUser(localStorage.getItem('userID'));
-      setName(localStorage.getItem('name'));
-      setEmail(localStorage.getItem('email'));
-      setUserImg(localStorage.getItem('userImg'));
+onAuthStateChanged(getAuth(), (user) => {
+  if (user) {
+    // User is signed in, see docs for a list of available properties
+    // https://firebase.google.com/docs/reference/js/firebase.User
+    console.log('signed in');
+    setCurrentUser(getAuth().currentUser.uid);
+    setName(getAuth().currentUser.name);
+    setEmail(getAuth().currentUser.email);
+    setUserImg(getAuth().currentUser.photoURL);
+    // ...
+  } else {
+    console.log('signed out');
   }
-}, [signInToken]);
+});
 
 
   return (
