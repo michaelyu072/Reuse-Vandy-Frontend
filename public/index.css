@@ -12,7 +12,6 @@ body, html {
   min-height: 100vh;
   /* background: linear-gradient(165deg, #404c74 , 15%,  #001f4d, 70%, rgb(4, 3, 77)); */
   background: white;
-  overflow-x: hidden;
 }
 
 .searchContainer {
@@ -233,7 +232,7 @@ body, html {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   transition: .1s;
-
+  user-select: none;
 }
 
 .resultSwitchYes {
