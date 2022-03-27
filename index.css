@@ -1,0 +1,491 @@
+body, html {
+  border: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.main{
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  /* background: linear-gradient(165deg, #404c74 , 15%,  #001f4d, 70%, rgb(4, 3, 77)); */
+  background: white;
+}
+
+.searchContainer {
+  width: 100%;
+  height: auto;
+  padding-bottom: 10%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+
+.searchBarContainer {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #d8c18e;
+  height: auto;
+  min-height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 5%;
+  padding-right: 5%;
+  z-index: 3;
+  box-shadow: 0px 0px 10px #686765;
+}
+
+.searchBarBox {
+  background: white;
+  border: 1px solid rgb(156, 154, 154);
+  padding-left: 15px;
+  padding-right: 2px;
+  margin: 5px;
+  height: 40%;
+  border-radius: 5px;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 0px 5px #b6b69e;
+}
+
+
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: auto;
+  cursor: default;
+  user-select: none;
+}
+
+.reuseWord {
+  margin:0;
+  margin-right: 10px;
+  font-size: 25px;
+  line-height: 18px;
+  font-family: 'Alfa Slab One';
+  color: white;
+}
+
+.vandyWord {
+  margin:0;
+  margin-left: 20px;
+  font-size: 45px;
+  line-height: 38px;
+  font-family: 'Brush Script MT', cursive;
+}
+
+
+.searchBar {
+  width: 100%;
+  height: 90%;
+  padding: 0;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  font-size: 20px;
+  font-family: sans-serif;
+  font-weight: 200;
+}
+
+.searchButton {
+  width: 33px;
+  height: 33px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(102, 101, 101);
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+.searchButton:active {
+  background: rgb(155, 153, 153);
+}
+
+.searchButton svg {
+  color: white;
+}
+
+.uploadButton,
+.signInButton {
+  height: auto;
+  width: 80px;
+  background: white;
+  font-family: 'Open Sans', sans-serif;
+  color: #ac925b;
+  cursor: pointer;
+}
+
+.signOutButton {
+  color: gray;
+  background: none;
+  outline: none;
+  border: none;
+  cursor:pointer;
+}
+
+.signOutButton:hover {
+  text-decoration: underline;
+}
+.profileContainer {
+  width: auto;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.profilePopUp {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: fit-content;
+  height: auto;
+  min-width: 200px;
+  min-height: 300px;
+  left: 0;
+  right: 0;
+  transform: translateX(-60%);
+  background: #fafafa;
+  border-radius: 5px;
+  padding: 10%;
+  box-shadow: 0px 0px 10px #9e9e9d;
+  cursor: default;
+}
+
+.profileImg,
+.profileContainer svg {
+  width: 50px;
+  height: 50px;
+  color: white;
+  border: 2px solid white;
+  border-radius: 50%;
+  background: #d8c18e;
+  box-shadow: 0px 0px 10px #9e9e9d;
+}
+
+.profileImg:hover,
+.profileContainer svg:hover {
+  transform: translateY(-2px);
+  transition: .2s;
+}
+
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nameText {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  text-align: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.emailText,
+.resultsText {
+  font-weight: 400;
+  margin-top: 0;
+  font-family: 'Open Sans', sans-serif;
+  overflow-wrap: break-word;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.resultsText {
+  margin-top: 20vh;
+}
+
+.resultSwitches {
+  height: 100px;
+  margin-left: 10%;
+  margin-right: 10%;
+  display: flex;
+  align-items: flex-end;
+  transform: translateY(1px);
+}
+
+.resultSwitchNot,
+.resultSwitchYes {
+  margin-right: 4px;
+  border: 1px solid gray;
+  cursor: pointer;
+  height: 25px;
+  border: 1px solid rgb(245, 240, 240);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  transition: .1s;
+  user-select: none;
+}
+
+.resultSwitchYes {
+  height: 28px;
+  border-bottom: none;
+  background: white;
+  cursor: pointer;
+  transform: translateY(1px);
+  box-shadow: 2px -1px 2px rgb(201, 197, 197);
+}
+
+.resultsBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  padding-top: 50px;
+  border-top: 1px solid rgb(245, 240, 240);
+}
+
+.resultText {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.resultShadowBox {
+  height: 30vw;
+  max-height: 400px;
+  width: 85%;
+  min-width: 600px;
+  box-shadow: 5px 5px 5px rgb(190, 190, 190);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+
+.resultItemBox {
+  position: relative;
+  height: calc(100% + 4px);
+  width: calc(100% + 4px);
+  border: 1px solid rgb(245, 240, 240);
+  box-shadow: 0px 0px 10px rgb(201, 197, 197);
+  display: flex;
+  border-radius: 5px;
+  background: white;
+  transition: .1s;
+}
+
+.deleteButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background: rgb(230, 112, 112);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+
+
+.itemImgBox {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemImg {
+  width: 60%;
+  height: 60%;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.itemDescriptions {
+  padding-top: 5%;
+  padding-bottom: 10%;
+  width: 30%;
+  padding-left: 5%;
+  padding-right: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.descriptionBox{
+  font-family: 'Open Sans', sans-serif;
+  overflow-wrap: break-word;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+
+.phoneNumber,
+.vandyEmail {
+  text-align: left;
+  font-family: 'Open Sans', sans-serif;
+  width: 100%;
+  font-size: 15px;
+}
+
+.itemCheckoutBox {
+  width: 30%;
+  padding-left: 5%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.resultItemBox:hover {
+  transform: translateY(-5px) translateX(-5px);
+  transition: 0.2s;
+}
+
+
+.price {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.uploadForm{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: default;
+}
+
+.formInner{
+  position: relative;
+  padding: 32px;
+  width: 50%;
+  height: 70%;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 6px 6px 29px -4px rgba(0,0,0,0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
+}
+
+.formInner .close-btn{
+   position: absolute;
+   top: 16px;
+   right: 16px;
+   cursor: pointer;
+   border: none;
+   background: rgb(226, 224, 224);
+   border-radius: 5px;
+   width: 20px;
+   height: 20px;
+}
+
+.inputContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.formEntry{
+  display: block;
+  white-space: nowrap;
+}
+
+.formLabel{
+  display: inline-block;
+  margin: auto;
+  width: 20%;
+  padding: 8px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.formInput{
+  display: inline-block;
+  margin: 8px;
+  width: 70%;
+  padding: 8px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+
+.pictureInput{
+  display: inline-block;
+  margin: 8px;
+  width: 50%;
+  padding: 8px;
+}
+
+.formTitle{
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.btn-submit{
+    width: 150px;
+    height: 40px;
+    margin-top: 20px;
+    background: #d8c18e;
+    cursor: pointer;
+}
+
+.btn-submit:disabled {
+  cursor: default
+}
+
+.submittedBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 500;
+}
+
+.submittedIconBox{
+  width: 50px;
+  height: 50px;
+  background: rgb(0, 248, 165);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.submittedIconBox svg {
+  width: 80%;
+  height: 80%;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+.submittedIconBox svg:hover {
+  transform: none;
+}

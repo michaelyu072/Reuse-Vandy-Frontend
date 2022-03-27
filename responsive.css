@@ -1,0 +1,131 @@
+
+
+@media (max-width: 800px) {
+
+    .formInner {
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-bottom: 0;
+        padding-top: 0;
+        width: 70%;
+        justify-content: start;
+        align-items: center;
+    }
+    .formTitle{
+        margin-top: 40px;
+    }
+
+    .formLabel {
+        width: 100%;
+    }
+
+    .formInput,
+    .pictureInput {
+        margin-top: 0;
+        margin-bottom: 0;
+        width: 90%;
+    }
+
+    .btn-submit {
+        min-height: 30px;
+        margin-bottom: 20px;
+    }
+
+    .searchBarContainer {
+        position: relative;
+        flex-direction: column-reverse;
+        padding: 5px 0;
+    }
+
+    .profilePopUp {
+        transform: translateX(-39%);
+    }
+
+    .searchBarBox {
+        width: 80%;
+    }
+
+    .searchBar {
+        font-size: 10px;
+    }
+
+    .profileContainer,
+    .logoContainer {
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+
+    .resultItemBox {
+        flex-direction: column;
+        width: 100%;
+        box-shadow: 0px 0px 20px rgb(190, 190, 189);
+    }
+
+    .itemImgBox {
+        width: 100%;
+        height: 40%;
+        display: flex;
+        justify-content: center;
+        min-height: 150px;
+        padding-top: 10px;
+    }
+
+    .itemCheckoutBox {
+        height: 30%;
+        width: 100%;
+        padding: 0;
+    }
+
+    .descriptionBox {
+        margin: 0;
+        padding: 0 10px;
+        width: auto;
+    }
+
+    .price {
+        margin-bottom: 0;
+        margin-top: 10px;
+        text-align: center;
+        padding: 0 10%;
+    }
+
+    .itemDescriptions {
+        padding: 10px;
+        width: auto;
+    }
+
+    .resultShadowBox {
+        height: auto;
+        box-shadow: none;
+        min-width: 0;
+        max-height: none;
+        width: 100%;
+    }
+
+    .resultItemBox {
+        height: auto;
+    }
+
+    .resultItemBox:hover {
+        transform: none;
+        transition: 0.2s;
+      }
+
+    .price {
+        font-size: 25px;
+    }
+
+    .searchBarBox {
+        height: 30px;
+    }
+
+    .searchButton {
+        height: 28px;
+    }
+
+    .submittedBox {
+        margin-top: 27vh;
+    }
+
+
+}
