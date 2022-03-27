@@ -71,7 +71,7 @@ useEffect(() => {
         className = 'searchBar'
         onChange = {(e) => {props.updateSearch(e.target.value);}}
         />
-        <button className = 'searchButton' onClick = {props.search}><SearchIcon/></button>
+        <button className = 'searchButton' onClick = {() => {props.search(true)}}><SearchIcon/></button>
         </div>
 
 

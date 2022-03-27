@@ -11,15 +11,23 @@ function App(props) {
     const moves = useSpring({opacity : rendered ? 1 : 0, config: {duration: 1000}});
     const [searchToggle, flipSearchToggle] = useState(true);
     const [searching, setSearching] = useState(false);
+    const [displayMyItem, setDisplayMyItem] = useState(false);
+
+    function displayMyItemList(isDisplayMyItem) {
+      setDisplayMyItem(isDisplayMyItem);
+    }
 
     function updateSearch(newTerm) {
       updateSearchTerm(newTerm);
     }
 
-    function search() {
+    function search(button) {
       console.log('search');
       setSearching(true);
-      flipSearchToggle(!searchToggle)
+      flipSearchToggle(!searchToggle);
+      if(button) {
+        displayMyItemList(false);
+      }
     }
 
     useEffect(() => {
@@ -32,7 +40,10 @@ function App(props) {
       <animated.div className="searchContainer" style = {moves}>
         {/* <Heading /> */}
         <SearchBar updateSearch = {updateSearch} search = {search} />
-        <Results stopSearch = {() => {setSearching(false)}} searching = {searching} searchTerm = {searchTerm} searchToggle = {searchToggle} search = {search}/>
+        <Results stopSearch = {() => {setSearching(false)}} 
+        searching = {searching} searchTerm = {searchTerm} searchToggle = {searchToggle} search = {search}
+        displayMyItem = {displayMyItem} displayMyItemList = {displayMyItemList}
+        />
       </animated.div>
     </section>
   );

@@ -11,7 +11,6 @@ function Results(props) {
     const [dataArray, setDataArray] = useState([]);
     const [myItemArray, setMyItemArray] = useState([]);
     const [noResult, setNoResult] = useState(false);
-    const [displayMyItem, setDisplayMyItem] = useState(false);
     firebase.initializeApp(config);
     const db = firebase.firestore();
 
@@ -83,15 +82,15 @@ function Results(props) {
         props.stopSearch();
      }, [props.searchToggle]);
    
-     const currentArray = displayMyItem ? myItemArray : dataArray;
+     const currentArray = props.displayMyItem ? myItemArray : dataArray;
      console.log(currentArray);
    
 
     return (<>
         <section className = 'resultSwitches'>
-        <button className = {! displayMyItem ? 'resultSwitchYes' : 'resultSwitchNot'} onClick = {() => {setDisplayMyItem(false)}}>Search Results</button>
+        <button className = {! props.displayMyItem ? 'resultSwitchYes' : 'resultSwitchNot'} onClick = {() => {props.displayMyItemList(false)}}>Search Results</button>
         { localStorage.getItem('userID') ? 
-        <button className = { displayMyItem ? 'resultSwitchYes' : 'resultSwitchNot'} onClick = {() => {setDisplayMyItem(true)}}>My Items</button>
+        <button className = { props.displayMyItem ? 'resultSwitchYes' : 'resultSwitchNot'} onClick = {() => {props.displayMyItemList(true)}}>My Items</button>
         : <> </>}
         </section>
         <section className = 'resultsBox'>
