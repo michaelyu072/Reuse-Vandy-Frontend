@@ -1,3 +1,10 @@
+# Demo Video
+
+https://www.youtube.com/watch?v=RLRa5nXKQ-8
+
+# Published At
+
+https://michaelyu072.github.io/Reuse-Vandy-Frontend/
 
 Note this requires certain packages such as react-scripts.
 
