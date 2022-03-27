@@ -30,6 +30,28 @@ function Results(props) {
     useEffect(() => {
         var userData = [];
         const q = props.searchTerm;
+        // No search term just show 5 items
+        if (q == ""){
+            db.collection("items").get().then((res) => {
+                if (res.empty){
+                    // EMPTY
+                }
+                
+                res.forEach(doc => {
+                    if (userData.length < 5){
+                    userData.push(doc.data());
+                    }
+                  });
+                  console.log('results: ');
+                  console.log(userData);
+                  setDataArray(userData);
+                  if(userData.length == 0) {
+                      setNoResult(true);
+                  }
+                
+    
+            });
+        } else {
         const normalizedQuery = q.toLowerCase().split(/[\s-\,!?]/);
         db.collection("items").where('sellerFields', 'array-contains-any', normalizedQuery).get().then((res) => {
             if (res.empty){
@@ -45,6 +67,7 @@ function Results(props) {
               }
 
         });
+    }
     
         props.stopSearch();
      }, [props.searchToggle]);
@@ -57,7 +80,9 @@ function Results(props) {
             }
 
             res.forEach(doc => {
+             
                 userData.push(doc.data());
+                
               });
               setMyItemArray(userData);
               if(userData.length == 0) {
