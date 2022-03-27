@@ -26,14 +26,19 @@ function SearchBar(props) {
     var provider = new GoogleAuthProvider();
     signInWithPopup(getAuth(), provider).then((res) => {
         const user = getAuth().currentUser;
-        setCurrentUser(user);
-        localStorage.setItem('userImg', user.photoURL);
-        localStorage.setItem('userID', user.uid);
-        localStorage.setItem('name', user.displayName);
-        localStorage.setItem('email', user.email);
-        setSignIn(true);
-        setShowProfile(false);
-        window.location.reload();
+        if(user.email.toLowerCase().endsWith("vanderbilt.edu")) {
+          setCurrentUser(user);
+          localStorage.setItem('userImg', user.photoURL);
+          localStorage.setItem('userID', user.uid);
+          localStorage.setItem('name', user.displayName);
+          localStorage.setItem('email', user.email);
+          setSignIn(true);
+          setShowProfile(false);
+          window.location.reload();
+        } else {
+          alert('Please Sign In With Vanderbilt Google Account');
+        }
+
     })
 }
 
