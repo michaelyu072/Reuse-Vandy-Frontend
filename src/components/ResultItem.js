@@ -1,4 +1,5 @@
 import React from "react";
+import CloseIcon from '@mui/icons-material/Close';
 
 function ResultItem(props) {
 
@@ -19,10 +20,10 @@ function ResultItem(props) {
         <div className = 'itemDescriptions'> 
             <p className = 'vandyEmail'>Seller: {obj.sellerName}</p>
             <p className = 'vandyEmail'>Email: {obj.sellerEmail}</p>
-            <p className = 'phoneNumber'>Phone: {obj.sellerPhone}</p>
+            {obj.sellerPhone ? <p className = 'phoneNumber'>Phone: {obj.sellerPhone}</p> : <></>}
         </div>
         {obj.sellerID == localStorage.getItem('userID') ? 
-        <button className = 'deleteButton' onClick = {() => {props.delete(obj.itemID)}}>X</button> : <> </>}
+        <button className = 'deleteButton' onClick = {() => {props.delete(obj.itemID)}}><CloseIcon/></button> : <> </>}
 
     </div>
     </div>

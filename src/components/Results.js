@@ -36,7 +36,7 @@ function Results(props) {
         console.log('called');
         var userData = [];
         const q = props.searchTerm;
-        const normalizedQuery = q.toLowerCase().split(/[\s-\.,!?]/);
+        const normalizedQuery = q.toLowerCase().split(/[\s-\,!?]/);
         console.log(normalizedQuery);
         db.collection("items").where('sellerFields', 'array-contains-any', normalizedQuery).get().then((res) => {
             if (res.empty){

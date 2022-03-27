@@ -31,6 +31,7 @@ function SearchBar(props) {
         localStorage.setItem('name', user.displayName);
         localStorage.setItem('email', user.email);
         setSignIn(true);
+        setShowProfile(false);
     })
 }
 
@@ -68,7 +69,7 @@ useEffect(() => {
         className = 'searchBar'
         onChange = {(e) => {props.updateSearch(e.target.value);}}
         />
-        <button className = 'searchButton' onClick = {props.search}><SearchIcon/></button>
+        <button className = 'searchButton' onClick = {() => {props.search}><SearchIcon/></button>
         </div>
 
 

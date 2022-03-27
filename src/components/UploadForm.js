@@ -38,9 +38,8 @@ function UploadForm(props) {
     
     searchable = descriptionInput
     .toLowerCase()
-    .split(/[\s-\.,!?]/)
-    .filter(v=>v.length>3);
-    console.log(searchable)
+    .split(/[\s-\.,!?]/);
+    console.log('description in data' + searchable);
 
     //searchable = Array.from(new Set(searchable)); //remove duplicates
     searchFields.push(...searchable);
