@@ -22,6 +22,7 @@ function SearchBar(props) {
   firebase.initializeApp(config);
   const db = firebase.firestore();
   function signIn() {
+    localStorage.clear();
     var provider = new GoogleAuthProvider();
     signInWithPopup(getAuth(), provider).then((res) => {
         const user = getAuth().currentUser;
