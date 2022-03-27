@@ -90,7 +90,9 @@ function Results(props) {
     return (<>
         <section className = 'resultSwitches'>
         <button className = {! displayMyItem ? 'resultSwitchYes' : 'resultSwitchNot'} onClick = {() => {setDisplayMyItem(false)}}>Search Results</button>
+        { localStorage.getItem('userID') ? 
         <button className = { displayMyItem ? 'resultSwitchYes' : 'resultSwitchNot'} onClick = {() => {setDisplayMyItem(true)}}>My Items</button>
+        : <> </>}
         </section>
         <section className = 'resultsBox'>
             {currentArray.length != 0 ? currentArray.map((c, index) => {
