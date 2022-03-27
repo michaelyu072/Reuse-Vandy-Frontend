@@ -111,6 +111,10 @@ body, html {
   margin-bottom: 1px;
 }
 
+.searchButton:active {
+  background: rgb(155, 153, 153);
+}
+
 .searchButton svg {
   color: white;
 }
@@ -280,6 +284,7 @@ body, html {
   display: flex;
   border-radius: 5px;
   background: white;
+  transition: .1s;
 }
 
 .deleteButton {
