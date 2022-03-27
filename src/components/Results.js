@@ -42,8 +42,6 @@ function Results(props) {
                     userData.push(doc.data());
                     }
                   });
-                  console.log('results: ');
-                  console.log(userData);
                   setDataArray(userData);
                   if(userData.length == 0) {
                       setNoResult(true);
