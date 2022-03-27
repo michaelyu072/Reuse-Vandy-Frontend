@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/Reuse-Vandy-Frontend/static/js/main.60774efd.js",
+    "main.js": "/Reuse-Vandy-Frontend/static/js/main.a04cbeab.js",
     "index.html": "/Reuse-Vandy-Frontend/index.html",
-    "main.60774efd.js.map": "/Reuse-Vandy-Frontend/static/js/main.60774efd.js.map"
+    "main.a04cbeab.js.map": "/Reuse-Vandy-Frontend/static/js/main.a04cbeab.js.map"
   },
   "entrypoints": [
-    "static/js/main.60774efd.js"
+    "static/js/main.a04cbeab.js"
   ]
 }
