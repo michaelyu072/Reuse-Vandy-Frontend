@@ -9,7 +9,7 @@ import CheckIcon from '@mui/icons-material/Check';
 
 function UploadForm(props) {
   const [priceInput, updatePriceInput] = useState(0);
-  const [categoryInput, updateCategoryInput] = useState("");
+  const [categoryInput, updateCategoryInput] = useState("Other");
   const [descriptionInput, updateDescriptionInput] = useState("");
   const [nameInput, updateNameInput] = useState("");
   const [emailInput, updateEmailInput] = useState("");
@@ -102,12 +102,15 @@ function UploadForm(props) {
                 })
                 .then((res) => {
                   updateSubmitted(true);
+                  props.search();
                 });
 
               db.collection("count")
                 .doc("1")
                 .set({ value: currentCount + 1 });
             });
+        }).catch(() => {
+          alert('An error has occurred, please try again :)');
         });
       });
   }

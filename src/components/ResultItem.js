@@ -21,7 +21,8 @@ function ResultItem(props) {
             <p className = 'vandyEmail'>Email: {obj.sellerEmail}</p>
             <p className = 'phoneNumber'>Phone: {obj.sellerPhone}</p>
         </div>
-        {obj.sellerID == localStorage.getItem('userID') ? <button onClick = {() => {props.delete(obj.itemID)}}>remove</button> : <> </>}
+        {obj.sellerID == localStorage.getItem('userID') ? 
+        <button className = 'deleteButton' onClick = {() => {props.delete(obj.itemID)}}>X</button> : <> </>}
 
     </div>
     </div>

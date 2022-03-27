@@ -272,6 +272,7 @@ body, html {
 
 
 .resultItemBox {
+  position: relative;
   height: calc(100% + 4px);
   width: calc(100% + 4px);
   border: 1px solid rgb(245, 240, 240);
@@ -279,7 +280,23 @@ body, html {
   display: flex;
   border-radius: 5px;
   background: white;
+}
 
+.deleteButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background: rgb(230, 112, 112);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 
@@ -342,13 +359,6 @@ body, html {
   font-family: 'Open Sans', sans-serif;
   font-weight: 700;
   font-size: 40px;
-}
-
-.checkoutButton {
-  width: 150px;
-  height: 40px;
-  background: #d8c18e;
-  cursor: pointer;
 }
 
 .uploadForm{

@@ -64,7 +64,7 @@ useEffect(() => {
             <p className = 'vandyWord'>Vandy</p>
         </div>
         <div className = 'searchBarBox'>
-        <input placeholder = 'Search Reuse Vandy'
+        <input placeholder = 'Search By Item, Seller Vandy Email, or Seller Name'
         className = 'searchBar'
         onChange = {(e) => {props.updateSearch(e.target.value);}}
         />
@@ -80,7 +80,7 @@ useEffect(() => {
         setButtonPopup = {() => {setButtonPopup(true)}}signIn = {signIn} currentUser = {currentUser}/> : <></>}
         </div>
 
-        { buttonPopup ? <Form
+        { buttonPopup ? <Form search = {props.search}
           trigger = {buttonPopup}
           setTrigger = {setButtonPopup}/> : <></> }
 
