@@ -108,9 +108,10 @@ function UploadForm(props) {
                 .doc("1")
                 .set({ value: currentCount + 1 });
             });
-        }).catch(() => {
-          alert('An error has occurred, please try again :)');
         });
+      }).catch((e) => {
+        alert('An error has occurred, please try again :)');
+        window.location.reload();
       });
   }
 
