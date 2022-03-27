@@ -39,7 +39,7 @@ function SearchBar(props) {
   function signOutOfFirebase() {
     signOut(getAuth()).then((res)=> {
       localStorage.clear();
-      window.location.reload();
+      window.location.assign('https://accounts.google.com/logout');
     });
   }
 
