@@ -68,7 +68,7 @@ onAuthStateChanged(getAuth(), (user) => {
             <p className = 'vandyWord'>Vandy</p>
         </div>
         <div className = 'searchBarBox'>
-        <input placeholder = 'Search By Item, Seller Vandy Email, or Seller Name'
+        <input placeholder = 'Search By Item, Seller Email, or Seller Name'
         className = 'searchBar'
         onChange = {(e) => {props.updateSearch(e.target.value);}}
         />
